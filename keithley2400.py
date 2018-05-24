@@ -26,7 +26,8 @@ class Keithley2400(object):
         self.ser.close()
 
     def sendValue(self,string):
-        self.ser.write(string+"\r")
+        # self.ser.write(string+"\r")
+        self.ser.write(string.encode() + b'\r\n')  # \r\n 终止
         time.sleep(0.2)
 
     def readValue(self, string):
